@@ -10,6 +10,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    sex: {
+        type: String,
+        required: true
+    },
+    date_of_birth: {
+        type: Date,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -24,6 +32,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    covid_19_test: {
+        type: Boolean,
+        default: false
+    },
     profileImageUrl: {
         type: String
     },
@@ -31,6 +43,11 @@ const userSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Meeting"
+        }
+    ],
+    chronicle_dis: [
+        {
+            type: String
         }
     ]
 });
