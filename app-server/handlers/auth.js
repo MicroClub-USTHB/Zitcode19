@@ -76,7 +76,7 @@ exports.signup = async function(req, res, next) {
         // otherwise just send back generic 400
 
         if (err.code === 11000)
-            err.message = "Sorry, that username/email is taken.";
+            err.message = "Sorry, that email/phone is taken.";
 
         return next({
             status: 400,

@@ -1,24 +1,29 @@
 const mongoose = require("mongoose");
 const User = require("./user");
 
-var meetingSchema = new mongoose.Schema({
-    user1: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+var meetingSchema = new mongoose.Schema(
+    {
+        user1: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        user2: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        Date: {
+            type: Date,
+            default: Date.now
+        },
+        place: {
+            type: String,
+            required: true
+        }
     },
-    user2: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    },
-    Date: {
-        type: Date,
-        default: Date.now
-    },
-    place: {
-        type: String,
-        required: true
+    {
+        timestamps: true
     }
-});
+);
 
 meetingSchema.pre("remove", async function(next) {
     try {
@@ -29,8 +34,8 @@ meetingSchema.pre("remove", async function(next) {
         let user1 = await User.findById(this.user1);
         let user2 = await User.findById(this.user2);
 
-        user1.message.remove(this.id);
-        user2.message.remove(this.id);
+        user1.meetings.remove(this.id);
+        user2.meetings.remove(this.id);
 
         await user1.save();
         await user2.save();
