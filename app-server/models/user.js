@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    email: {
+    phone: {
         type: String,
         required: true,
         unique: true
@@ -26,11 +26,6 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    phone: {
-        type: String,
-        required: true,
-        unique: true
     },
     covid_19_test: {
         type: Boolean,

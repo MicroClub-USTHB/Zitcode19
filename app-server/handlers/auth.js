@@ -9,7 +9,7 @@ exports.signin = async function(req, res, next) {
         // log them in
 
         let user = await db.User.findOne({
-            email: req.body.email
+            phone: req.body.phone
         });
         let { id, firstName, lastName, profileImageUrl } = user;
         let isMatch = await user.comparePassword(req.body.password);
@@ -33,13 +33,13 @@ exports.signin = async function(req, res, next) {
         } else {
             return next({
                 status: 400,
-                message: "Invalid Email/Password."
+                message: "Invalid Phone Number / Password."
             });
         }
     } catch (err) {
         return next({
             status: 400,
-            message: "Invalid Email/Password."
+            message: "Invalid Phone Number / Password."
         });
     }
 };
@@ -72,11 +72,10 @@ exports.signup = async function(req, res, next) {
     } catch (err) {
         // see what kind of error
         // if it is a certain error
-        // respond with username/email is already taken
+        // respond with phone is already taken
         // otherwise just send back generic 400
 
-        if (err.code === 11000)
-            err.message = "Sorry, that email/phone is taken.";
+        if (err.code === 11000) err.message = "Sorry, that phone is taken.";
 
         return next({
             status: 400,
