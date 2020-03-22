@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// /api/users/:id1/:id2/meetings
+// POST - /api/users/:id1/:id2/meetings
 exports.createMeeting = async function(req, res, next) {
     try {
         let meeting = await db.Meeting.create({
@@ -36,6 +36,23 @@ exports.createMeeting = async function(req, res, next) {
     }
 };
 
-exports.getMeeting = async function(req, res, next) {};
+// GET - /api/users/:id1/:id2/meetings/:meeting_id
+exports.getMeeting = async function(req, res, next) {
+    try {
+        let meeting = await db.Meeting.findById(req.params.meeting_id);
+        return res.status(200).json(meeting);
+    } catch (err) {
+        return next(err);
+    }
+};
 
-exports.deleteMeeting = async function(req, res, next) {};
+// DELETE - /api/users/:id1/:id2/meetings/:meeting_id
+exports.deleteMeeting = async function(req, res, next) {
+    try {
+        let foundMeeting = await db.Meeting.findById(req.params.meeting_id);
+        await foundMeeting.remove();
+        return res.status(200).json(foundMeeting);
+    } catch (err) {
+        return next(err);
+    }
+};
