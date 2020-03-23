@@ -56,7 +56,7 @@ exports.getPharmacy = async function(req, res, next) {
     }
 };
 
-// DELETE - /api/zones/:user_id/:zone_id/pharmacy/:pharmacy_id
+// DELETE - /api/zones/:user_id/:zone_id/pharmacy/:pharmacy_id/
 exports.deletePharmacy = async function(req, res, next) {
     try {
         let foundPharmacy = await db.Pharmacy.findById(req.params.pharmacy_id);
