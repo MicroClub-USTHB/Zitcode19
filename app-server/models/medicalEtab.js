@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Zone = require("./zone");
 
-const pharmacySchema = new mongoose.Schema({
+const medicalEtabSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -14,17 +14,22 @@ const pharmacySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    type: {
+        type: String,
+        required: true,
+        enum: ["Pharmacy", "Hospital", "Clinic", "Polyclinic", "Dispensary"]
+    },
     zone: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Zone"
     }
 });
 
-pharmacySchema.pre("remove", async function(next) {
+medicalEtabSchema.pre("remove", async function(next) {
     try {
         let zone = await Zone.findById(this.zone);
 
-        zone.pharmacies.remove(this.id);
+        zone.medical_etablissement.remove(this.id);
         await zone.save();
 
         return next();
@@ -33,6 +38,9 @@ pharmacySchema.pre("remove", async function(next) {
     }
 });
 
-const Pharmacy = mongoose.model("Pharmacy", pharmacySchema);
+const MedicalEtablissement = mongoose.model(
+    "MedicalEtablissement",
+    medicalEtabSchema
+);
 
-module.exports = Pharmacy;
+module.exports = MedicalEtablissement;

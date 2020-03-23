@@ -55,7 +55,7 @@ app.get("/api/meetings", loginRequired, async function(req, res, next) {
     }
 });
 
-// Zones - Pharmacies
+// Zones - medical etablissements
 app.use("/api/zones/:user_id", loginRequired, ensureUserIsAdmin, zonesRoutes);
 
 // Error Handling

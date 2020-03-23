@@ -10,11 +10,11 @@ const {
 } = require("../handlers/zones");
 
 const {
-    createPharmacy,
-    getPharmacies,
-    getPharmacy,
-    deletePharmacy
-} = require("../handlers/pharmacies");
+    createMedicalEtab,
+    getMedicalEtabs,
+    getMedicalEtab,
+    deleteMedicalEtab
+} = require("../handlers/medicalEtabs");
 
 // - Routes -
 // PREFIX - /api/zones/
@@ -29,16 +29,16 @@ router
     .get(getZone);
 
 // Pharmacies
-// PREFIX - /api/zones/:user_id/:zone_id/pharmacy/
+// PREFIX - /api/zones/:user_id/:zone_id/medical_etab/
 router
-    .route("/:zone_id/pharmacy")
-    .post(createPharmacy)
-    .get(getPharmacies);
+    .route("/:zone_id/medical_etab")
+    .post(createMedicalEtab)
+    .get(getMedicalEtabs);
 
-// PREFIX - /api/zones/:user_id/:zone_id/pharmacy/:pharmacy_id
+// PREFIX - /api/zones/:user_id/:zone_id/medical_etab/:medical_etab_id
 router
-    .route("/:zone_id/pharmacy/:pharmacy_id")
-    .delete(deletePharmacy)
-    .get(getPharmacy);
+    .route("/:zone_id/medical_etab/:medical_etab_id")
+    .delete(deleteMedicalEtab)
+    .get(getMedicalEtab);
 
 module.exports = router;

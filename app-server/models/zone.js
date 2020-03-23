@@ -17,10 +17,10 @@ const zoneSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pharmacies: [
+    medical_etablissement: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Pharmacy"
+            ref: "MedicalEtablissement"
         }
     ]
 });

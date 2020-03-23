@@ -21,4 +21,4 @@ mongoose.connection.on("connected", () => {
 module.exports.User = require("./user");
 module.exports.Meeting = require("./meeting");
 module.exports.Zone = require("./zone");
-module.exports.Pharmacy = require("./pharmacy");
+module.exports.MedicalEtablissement = require("./medicalEtab");
