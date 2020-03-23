@@ -16,7 +16,13 @@ const zoneSchema = new mongoose.Schema({
     risk_state: {
         type: String,
         required: true
-    }
+    },
+    pharmacies: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Pharmacy"
+        }
+    ]
 });
 
 const Zone = mongoose.model("Zone", zoneSchema);
