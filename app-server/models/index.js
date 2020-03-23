@@ -3,9 +3,10 @@ mongoose.set("debug", true);
 mongoose.Promise = Promise;
 
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost:27017/covid19",
+    /*process.env.MONGODB_URI || */ "mongodb://localhost:27017/covid19",
     {
         useNewUrlParser: true,
+        useFindAndModify: false,
         useUnifiedTopology: true,
         keepAlive: true,
         useCreateIndex: true,
@@ -19,3 +20,4 @@ mongoose.connection.on("connected", () => {
 
 module.exports.User = require("./user");
 module.exports.Meeting = require("./meeting");
+module.exports.Zone = require("./zone");

@@ -28,7 +28,34 @@ exports.ensureCorrectUser = function(req, res, next) {
         const token = req.headers.authorization.split(" ")[1];
         jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {
             console.log(decoded);
-            if (decoded && decoded.id === req.params.id1) {
+            if (decoded && decoded.id === req.params.user_id) {
+                return next();
+            } else {
+                return next({
+                    status: 401,
+                    message: "Unauthorized"
+                });
+            }
+        });
+    } catch (err) {
+        return next({
+            status: 401,
+            message: "Unauthorized"
+        });
+    }
+};
+
+// Admin - Authorization - TODO
+exports.ensureUserIsAdmin = function(req, res, next) {
+    try {
+        const token = req.headers.authorization.split(" ")[1];
+        jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {
+            console.log(decoded);
+            if (
+                decoded &&
+                decoded.id === req.params.user_id &&
+                decoded.userType === "admin"
+            ) {
                 return next();
             } else {
                 return next({
