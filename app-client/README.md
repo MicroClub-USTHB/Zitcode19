@@ -1,3 +1,3 @@
 ## client side 
 
-all front-end work goes here
+All front-end work goes here.
