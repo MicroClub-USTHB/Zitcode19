@@ -11,7 +11,7 @@ exports.signin = async function(req, res, next) {
         let user = await db.User.findOne({
             phone: req.body.phone
         });
-        let { id, firstName, lastName, profileImageUrl } = user;
+        let { id, firstName, lastName, profileImageUrl, userType } = user;
         let isMatch = await user.comparePassword(req.body.password);
         if (isMatch) {
             let token = jwt.sign(
@@ -19,7 +19,8 @@ exports.signin = async function(req, res, next) {
                     id,
                     firstName,
                     lastName,
-                    profileImageUrl
+                    profileImageUrl,
+                    userType
                 },
                 process.env.SECRET_KEY
             );
@@ -28,6 +29,7 @@ exports.signin = async function(req, res, next) {
                 firstName,
                 lastName,
                 profileImageUrl,
+                userType,
                 token
             });
         } else {
@@ -50,14 +52,15 @@ exports.signup = async function(req, res, next) {
         // create a token (signing a token)
         // SECRET_KEY is stored inside process.env.SECRET_KEY
         let user = await db.User.create(req.body);
-        let { id, firstName, lastName, profileImageUrl } = user;
+        let { id, firstName, lastName, profileImageUrl, userType } = user;
 
         let token = jwt.sign(
             {
                 id,
                 firstName,
                 lastName,
-                profileImageUrl
+                profileImageUrl,
+                userType
             },
             process.env.SECRET_KEY
         );
@@ -67,6 +70,7 @@ exports.signup = async function(req, res, next) {
             firstName,
             lastName,
             profileImageUrl,
+            userType,
             token
         });
     } catch (err) {

@@ -4,9 +4,18 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
+
+// Import Routes
 const authRoutes = require("./routes/auth");
 const meetingsRoutes = require("./routes/meetings");
-const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
+const zonesRoutes = require("./routes/zones");
+
+// Import Middlewares
+const {
+    loginRequired,
+    ensureCorrectUser,
+    ensureUserIsAdmin
+} = require("./middleware/auth");
 const db = require("./models");
 
 const PORT = 3001;
@@ -15,9 +24,12 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // all my routes here - they will com later!!
+// User Auth
 app.use("/api/auth", authRoutes);
+
+// Meetings
 app.use(
-    "/api/users/:id1/:id2/meetings",
+    "/api/users/:user_id/:user_id2/meetings",
     loginRequired,
     ensureCorrectUser,
     meetingsRoutes
@@ -42,6 +54,9 @@ app.get("/api/meetings", loginRequired, async function(req, res, next) {
         return next(err);
     }
 });
+
+// Zones - medical etablissements
+app.use("/api/zones/:user_id", loginRequired, ensureUserIsAdmin, zonesRoutes);
 
 // Error Handling
 app.use(function(req, res, next) {

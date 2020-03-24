@@ -1,16 +1,16 @@
 const db = require("../models");
 
-// POST - /api/users/:id1/:id2/meetings
+// POST - /api/users/:user_id/:user_id2/meetings
 exports.createMeeting = async function(req, res, next) {
     try {
         let meeting = await db.Meeting.create({
             place: req.body.place,
-            user1: req.params.id1,
-            user2: req.params.id2
+            user1: req.params.user_id,
+            user2: req.params.user_id2
         });
 
-        let foundUser1 = await db.User.findById(req.params.id1);
-        let foundUser2 = await db.User.findById(req.params.id2);
+        let foundUser1 = await db.User.findById(req.params.user_id);
+        let foundUser2 = await db.User.findById(req.params.user_id2);
 
         foundUser1.meetings.push(meeting.id);
         foundUser2.meetings.push(meeting.id);
@@ -36,7 +36,7 @@ exports.createMeeting = async function(req, res, next) {
     }
 };
 
-// GET - /api/users/:id1/:id2/meetings/:meeting_id
+// GET - /api/users/:user_id/:user_id2/meetings/:meeting_id
 exports.getMeeting = async function(req, res, next) {
     try {
         let meeting = await db.Meeting.findById(req.params.meeting_id);
@@ -46,7 +46,7 @@ exports.getMeeting = async function(req, res, next) {
     }
 };
 
-// DELETE - /api/users/:id1/:id2/meetings/:meeting_id
+// DELETE - /api/users/:user_id/:user_id2/meetings/:meeting_id
 exports.deleteMeeting = async function(req, res, next) {
     try {
         let foundMeeting = await db.Meeting.findById(req.params.meeting_id);
