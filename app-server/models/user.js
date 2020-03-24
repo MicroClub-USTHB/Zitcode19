@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    location: {
+        type: String,
+        required: true
+    },
     phone: {
         type: String,
         required: true,
@@ -33,6 +37,11 @@ const userSchema = new mongoose.Schema({
     },
     profileImageUrl: {
         type: String
+    },
+    userType: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user"
     },
     meetings: [
         {
@@ -52,6 +61,8 @@ userSchema.pre("save", async function(next) {
         if (!this.isModified("password")) {
             return next();
         }
+
+        if (this.isNew && this.userType === "admin") this.userType = "user";
 
         let hashedPassword = await bcrypt.hash(this.password, 10);
 
