@@ -7,6 +7,9 @@ This branch is dedicated to continuous development (all sorts of work to be push
 
 # Back-end
 Some documentation for front-end devs
+_VERY IMPORTANT_: for development reasons, we use a local connection to the database, to toggle the connection to a hosted databse, do the following:
+1. go to `app-server/models/index.js`.
+2. in the line _6_, you will find that `process.env.MONGODB_URI` is commented, **_UNCOMMENT_** it
 
 ## Models / Routes
 _Note_: The javascript included is going to contain the properties and an example of data.
