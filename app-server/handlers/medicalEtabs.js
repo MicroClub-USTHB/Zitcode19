@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// POST - /api/zones/:user_id/:zone_id/medical_etab
+// POST - /api/zones/:user_id/medical_etab/:zone_id
 exports.createMedicalEtab = async function(req, res, next) {
     try {
         let medicEtab = await db.MedicalEtablissement.create({
@@ -25,24 +25,25 @@ exports.createMedicalEtab = async function(req, res, next) {
     }
 };
 
-// GET - /api/zones/:user_id/:zone_id/medical_etab
+// GET - /api/zones/:user_id/medical_etab
 exports.getMedicalEtabs = async function(req, res, next) {
     try {
-        let foundmedicalEtablissements = await db.MedicalEtablissement.find().populate(
+        console.log("found");
+        let foundMedicalEtabs = await db.MedicalEtablissement.find().populate(
             "zone",
             {
                 wilaya: true,
                 risk_state: true
             }
         );
-
-        return res.status(200).json(foundmedicalEtablissements);
+        console.log(foundMedicalEtabs || "khra");
+        return res.status(200).json(foundMedicalEtabs);
     } catch (err) {
         return next(err);
     }
 };
 
-// GET - /api/zones/:user_id/:zone_id/medical_etab/:medical_etab_id
+// GET - /api/zones/:user_id/medical_etab/:medical_etab_id
 exports.getMedicalEtab = async function(req, res, next) {
     try {
         let foundmedicalEtablissement = await db.MedicalEtablissement.findById(
@@ -51,14 +52,13 @@ exports.getMedicalEtab = async function(req, res, next) {
             wilaya: true,
             risk_state: true
         });
-
         return res.status(200).json(foundmedicalEtablissement);
     } catch (err) {
         return next(err);
     }
 };
 
-// DELETE - /api/zones/:user_id/:zone_id/medical_etab/:medical_etab_id
+// DELETE - /api/zones/:user_id/medical_etab/:medical_etab_id
 exports.deleteMedicalEtab = async function(req, res, next) {
     try {
         let foundmedicalEtablissement = await db.MedicalEtablissement.findById(
