@@ -9,6 +9,7 @@ const errorHandler = require("./handlers/error");
 const authRoutes = require("./routes/auth");
 const meetingsRoutes = require("./routes/meetings");
 const zonesRoutes = require("./routes/zones");
+const medicalEtabRoutes = require("./routes/medicalEtab");
 
 // Import Middlewares
 const {
@@ -57,6 +58,14 @@ app.get("/api/meetings", loginRequired, async function(req, res, next) {
 
 // Zones - medical etablissements
 app.use("/api/zones/:user_id", loginRequired, ensureUserIsAdmin, zonesRoutes);
+
+// Zones - medical etablissements
+app.use(
+    "/api/medical_etab/:user_id",
+    loginRequired,
+    ensureUserIsAdmin,
+    medicalEtabRoutes
+);
 
 // Error Handling
 app.use(function(req, res, next) {
