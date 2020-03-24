@@ -11,7 +11,17 @@ exports.signin = async function(req, res, next) {
         let user = await db.User.findOne({
             phone: req.body.phone
         });
-        let { id, firstName, lastName, profileImageUrl, userType } = user;
+        let {
+            id,
+            firstName,
+            lastName,
+            sex,
+            date_of_birth,
+            location,
+            covid_19_test,
+            profileImageUrl,
+            userType
+        } = user;
         let isMatch = await user.comparePassword(req.body.password);
         if (isMatch) {
             let token = jwt.sign(
@@ -19,6 +29,10 @@ exports.signin = async function(req, res, next) {
                     id,
                     firstName,
                     lastName,
+                    sex,
+                    date_of_birth,
+                    location,
+                    covid_19_test,
                     profileImageUrl,
                     userType
                 },
@@ -28,6 +42,10 @@ exports.signin = async function(req, res, next) {
                 id,
                 firstName,
                 lastName,
+                sex,
+                date_of_birth,
+                location,
+                covid_19_test,
                 profileImageUrl,
                 userType,
                 token
@@ -52,13 +70,27 @@ exports.signup = async function(req, res, next) {
         // create a token (signing a token)
         // SECRET_KEY is stored inside process.env.SECRET_KEY
         let user = await db.User.create(req.body);
-        let { id, firstName, lastName, profileImageUrl, userType } = user;
+        let {
+            id,
+            firstName,
+            lastName,
+            sex,
+            date_of_birth,
+            location,
+            covid_19_test,
+            profileImageUrl,
+            userType
+        } = user;
 
         let token = jwt.sign(
             {
                 id,
                 firstName,
                 lastName,
+                sex,
+                date_of_birth,
+                location,
+                covid_19_test,
                 profileImageUrl,
                 userType
             },
@@ -69,6 +101,10 @@ exports.signup = async function(req, res, next) {
             id,
             firstName,
             lastName,
+            sex,
+            date_of_birth,
+            location,
+            covid_19_test,
             profileImageUrl,
             userType,
             token
