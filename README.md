@@ -15,17 +15,17 @@ _VERY IMPORTANT_: for development reasons, we use a local connection to the data
 _Note_: The javascript included is going to contain the properties and an example of data.
 ### User:
 + **Properties preceded by a:**
-	1. _*_ are required to sign up a user.
-	2. _+_ are required to sign in a user
+	1. _' - '_ are required to sign up a user.
+	2. _' + '_ are required to sign in a user
 	```javascript
 	{
-		/* * */firstName: "John",
-		/* * */lastName: "Wick",
-		/* * */sex: "Male",
-		/* * */date_of_birth: "1964-09-02",
-		/* * */location: "Los Angeles",
-		/* * + */phone: "06518XXXXX",
-		/* * + */password: "password",
+		/* - */firstName: "John",
+		/* - */lastName: "Wick",
+		/* - */sex: "Male",
+		/* - */date_of_birth: "1964-09-02",
+		/* - */location: "Los Angeles",
+		/* - + */phone: "06518XXXXX",
+		/* - + */password: "password",
 		covid_19_test: "false",
 		profileImageUrl: "",
 		userType: "user",
@@ -45,13 +45,13 @@ _Note_: The javascript included is going to contain the properties and an exampl
 ### Zone:
 
 + **Properties preceded by a:**
-	1. _*_ are required to Create a Zone.
+	1. _' - '_ are required to Create a Zone.
 	```javascript
 	{
-		/* * */longitude: 15,
-		/* * */latitude: 45,
-		/* * */wilaya: "Algiers",
-		/* * */risk_state: "Medium",
+		/* - */longitude: 15,
+		/* - */latitude: 45,
+		/* - */wilaya: "Algiers",
+		/* - */risk_state: "Medium",
 		medical_etablissement: [ObjectId]
 	}
 	```
@@ -76,20 +76,20 @@ _Note_: The javascript included is going to contain the properties and an exampl
 ### Medical Establishment:
 
 + **Properties preceded by a:**
-	1. _*_ are required to Create a Zone.
+	1. _' - '_ are required to Create a Zone.
 	```javascript
 	{
-		/* * */name: "Touahria",
-		/* * */location: "Douera",
-		/* * */phone: "0560401169",
-		/* * */type: "Pharmacy",
+		/* - */name: "Touahria",
+		/* - */location: "Douera",
+		/* - */phone: "0560401169",
+		/* - */type: "Pharmacy",
 		zone: ObjectId
 	}
 	```
 + **Route**:
 	| METHOD | ROUTE | DESCRIPTION | RESULT |
 	|:--------:|:-------------:|:-------------:|:-------------:|
-	| GET | /api/medical_etab/:user_id | Get all Medical Etabs|Array of Zones: `{name, location, phone, type, location, zone: {id, wilaya, risk_state}}`|
-	| POST | /api/medical_etab/:user_id/:zone_id | Create a Zone |`{name, location, phone, type, location, zone: {id, wilaya, risk_state}}`|
-	| GET | /api/medical_etab/:user_id/:zone_id | Get one Zone |Returns a Zone|
-	| DELETE | /api/medical_etab/:user_id/:zone_id | Delete a Zone |Returns a Zone|
+	| GET | /api/medical_etab/:user_id | Get all Medical Etabs|Array of Medical Establishments: `{name, location, phone, type, location, zone: {id, wilaya, risk_state}}`|
+	| POST | /api/medical_etab/:user_id/:zone_id | Create a Medical Establishment |`{name, location, phone, type, location, zone: {id, wilaya, risk_state}}`|
+	| GET | /api/medical_etab/:user_id/:medical_etab_id | Get one Medical Establishment |Returns a Medical Establishment|
+	| DELETE | /api/medical_etab/:user_id/:medical_etab_id | Delete a Medical Establishment |Returns the Deleted Medical Establishment|
