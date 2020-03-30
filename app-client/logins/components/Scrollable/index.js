@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import ScrollableTabView, { ScrollableTabBar, DefaultTabBar } from 'react-native-scrollable-tab-view'
 import Up from '../../screen/Sign/Sign-up'
 import In from '../../screen/Sign/Sign-in'
-import { PRIMARY } from '../../utils/const'
+import { PRIMARY, PRIMARY_BACKGROUND } from '../../utils/const'
 
 export default class Scrollable extends Component {
     render() {
@@ -16,7 +16,7 @@ export default class Scrollable extends Component {
                       elevation:4,
                      }}
                       tabStyle={{ borderRightWidth: 0.4, borderTopWidth: 0.4, borderColor: "#2A2A2A20" }} />}
-                tabBarBackgroundColor="#ffe"
+                tabBarBackgroundColor={PRIMARY_BACKGROUND}
                 tabBarUnderlineStyle={{ backgroundColor: PRIMARY, height:6}}
                 tabBarInactiveTextColor="#2A2A2A50"
                 tabBarActiveTextColor={PRIMARY}

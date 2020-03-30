@@ -1,4 +1,4 @@
-export const PRIMARY_BACKGROUND='#ffe';
+export const PRIMARY_BACKGROUND='#fff';
 export const SECENDARY_BACKGROUND='#ededed';
-export const PRIMARY='#40E0D0'
-export const PRIMARY_TEXT='#40E0D080'
+export const PRIMARY='#827ed3'
+export const PRIMARY_TEXT=PRIMARY+'80'
