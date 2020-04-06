@@ -5,9 +5,9 @@ class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Settings</Text>
+        <Text>TEST THIS THING aaaah</Text>
         <Button
-          title="Home으로 이동"
+         
           onPress={() => this.props.navigation.navigate('Home')}
         />
       </View>
