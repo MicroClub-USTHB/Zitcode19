@@ -6,7 +6,7 @@ export const Stat = (props: any) => {
 
   const { label, value,navigate } = props;
   
- const imagepath  =[require('awsss/Assets/Wash.png'),   require('awsss/Assets/Exercise.png') , require('awsss/Assets/Drink.png') , require('awsss/Assets/Clean.png') , require('awsss/Assets/Window.png')]
+ const imagepath  =[require('../../Assets/Wash.png'),   require('../../Assets/Exercise.png') , require('../../Assets/Drink.png') , require('../../Assets/Clean.png') , require('../../Assets/Window.png')]
   
         
    return (
