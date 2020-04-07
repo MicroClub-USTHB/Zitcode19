@@ -1,6 +1,6 @@
 import  React,{Component} from 'react';
 import { Image , ImageBackground, Text, View, StyleSheet , TouchableOpacity,Button ,Alert} from 'react-native';
-import Carousel from 'awsss/Carousel'
+import Carousel from '../Carousel'
 
   
 
