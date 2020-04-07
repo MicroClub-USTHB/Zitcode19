@@ -14,7 +14,7 @@ export default  class HomeScreen extends Component {
         return (
           <View style={this.styles.container}>
             <View style = {this.styles.Area}>
-              <Image source ={ require('awsss/Assets/Phato.jpg') }    style={{  flex :1, height: undefined, width: undefined  ,borderRadius : 11 , resizeMode : 'stretch' }}  />
+              <Image source ={ require('../Assets/Phato.jpg') }    style={{  flex :1, height: undefined, width: undefined  ,borderRadius : 11 , resizeMode : 'stretch' }}  />
                </View>
                <Carousel
         style='stats'
