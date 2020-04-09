@@ -3,8 +3,9 @@
 COVID-19 prevention &amp; safety dedicated mobile app by Micro Club members (also fighting coronavirus with zit zitoun according to bilel)
 
 # Dev branch
-This branch is dedicated to continuous development (all sorts of work to be pushed here)
-Dev branch is usually the branch aheadn, so pull it to get latest updates.
+This branch is dedicated to continuous development (all sorts of work to be pushed here).
+
+Dev branch is usually the branch ahead, so always pull it first to get latest updates.
 
 # Back-end
 Some documentation for front-end devs
