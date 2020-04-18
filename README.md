@@ -7,6 +7,7 @@ This branch is dedicated to continuous development (all sorts of work to be push
 
 Dev branch is usually the branch ahead, so pull it first to get latest updates.
 
+
 # Back-end
 Some documentation for front-end devs
 _VERY IMPORTANT_: for development reasons, we use a local connection to the database, to toggle the connection to a hosted databse, do the following:
