@@ -1,97 +1,84 @@
 # Zitcode19
 
-COVID-19 prevention &amp; safety dedicated mobile app by Micro Club members (also fighting coronavirus with zit zitoun according to bilel)
+COVID-19 prevention & safety dedicated mobile app by **Micro Club** members & instigated by **MI Agency**. This projects is focused on the COVID-19 breakout on national level (Algeria). 
+**(Project open for contribution):octocat:**.
 
-# Dev branch
-This branch is dedicated to continuous development (all sorts of work to be pushed here).
+# Master/Dev branch
+The **"dev" branch** is dedicated to continuous development (all sorts of work to be pushed here) & **Master** branch is updated once the work's tested and aprooved by dev & maintainers.
 
-Dev branch is usually the branch ahead, so always pull it first to get latest updates.
+**Dev** branch is usually the branch ahead, so pull it first to get latest updates.
 
-# Back-end
-Some documentation for front-end devs
-_VERY IMPORTANT_: for development reasons, we use a local connection to the database, to toggle the connection to a hosted databse, do the following:
-1. go to `app-server/models/index.js`.
-2. in the line _6_, you will find that `process.env.MONGODB_URI` is commented, **_UNCOMMENT_** it
 
-## Models / Routes
-_Note_: The javascript included is going to contain the properties and an example of data.
-### User:
-+ **Properties preceded by a:**
-	1. _' - '_ are required to sign up a user.
-	2. _' + '_ are required to sign in a user
-	```javascript
-	{
-		/* - */firstName: "John",
-		/* - */lastName: "Wick",
-		/* - */sex: "Male",
-		/* - */date_of_birth: "1964-09-02",
-		/* - */location: "Los Angeles",
-		/* - + */phone: "06518XXXXX",
-		/* - + */password: "password",
-		covid_19_test: "false",
-		profileImageUrl: "",
-		userType: "user",
-		meetings: [],
-		chronicle_dis: []
-	}
-	```
-+ **Routes**:
-	| METHOD | ROUTE | DESCRIPTION | RESULT |
-	|:--------:|:-------------:|:-------------:|:-------------:|
-	| POST | /api/auth/signup | create a user (returns a JWT)|{firstName, lastName, sex, date_of_birth, location, covid_19_test, userType, JWT}|
-	| POST | /api/auth/signin | Returns a JWT about a certain user |Same result as _Sign up_|
+### The App
 
-**Note**: the result of _sign up_ or _sgin in_ a user is an object containing the user's infos beside his _phone_ and _password_ + a JWT containing all these infos.
+|   |Login & Home Page|Zones|
+|---|---|---|
+|Prototype gif <br>Update: 18/04/2020|<img src="https://s4.gifyu.com/images/HomePage.gif" height="400"/>|<img src="https://s4.gifyu.com/images/Map.gif" height="400"/>|
 
----
-### Zone:
 
-+ **Properties preceded by a:**
-	1. _' - '_ are required to Create a Zone.
-	```javascript
-	{
-		/* - */longitude: 15,
-		/* - */latitude: 45,
-		/* - */wilaya: "Algiers",
-		/* - */risk_state: "Medium",
-		medical_etablissement: [ObjectId]
-	}
-	```
-+ **Routes**:
-	| METHOD | ROUTE | DESCRIPTION | RESULT |
-	|:--------:|:-------------:|:-------------:|:-------------:|
-	| GET | /api/zones/:user_id | Get all Zones |Array of Zones: `[ {longitude, latitude, wilaya, risk_state} ]`|
-	| POST | /api/zones/:user_id | Create a Zone | returns the created Zone: `{longitude, latitude, wilaya, risk_state}` |
-	| GET | /api/zones/:user_id/:zone_id | Get one Zone | Returns the Fetched Zone |
-	| DELETE | /api/zones/:user_id/:zone_id | Delete a Zone | Returns the Deleted Zone |
+### Project description:
 
-**Note**: Not anyone can create a Zone, only users with _admin_ roles have access to such a thing, that's why we specify the user_id in the route, and to ensure authorization, in the header the followed property must be available while fetching:
-```javascript
-{
-	header: {
-		"authorization": "Bearer <token of currentUser>"
-	}
-}
-```
----
+>**An application which facilitates the management of epidemic crises. It offers the possibility of tracking pharmacies and health centers, having an up-to-date map of risk areas and also having up-to-date feed of directives from the Ministry of Health and WHO. It will also be linked to a donation platform to help the community in crisis.**
 
-### Medical Establishment:
+### Contribution:![:octocat:](https://github.githubassets.com/images/icons/emoji/octocat.png ":octocat:")
+So you want to contribute? easy:
+- Fork the project
+- Make your changes
+- Push to your own fork
+- Make a Pull Request from your fork to the **"dev" branch** of the [original project](https://github.com/MicroClub-USTHB/Zitcode19)
+- That's it, wait for the maintainer to review your PR and approve it!
 
-+ **Properties preceded by a:**
-	1. _' - '_ are required to Create a Zone.
-	```javascript
-	{
-		/* - */name: "Touahria",
-		/* - */location: "Douera",
-		/* - */phone: "0560401169",
-		/* - */type: "Pharmacy",
-		zone: ObjectId
-	}
-	```
-+ **Route**:
-	| METHOD | ROUTE | DESCRIPTION | RESULT |
-	|:--------:|:-------------:|:-------------:|:-------------:|
-	| GET | /api/medical_etab/:user_id | Get all Medical Etabs|Array of Medical Establishments: `{name, location, phone, type, location, zone: {id, wilaya, risk_state}}`|
-	| POST | /api/medical_etab/:user_id/:zone_id | Create a Medical Establishment |`{name, location, phone, type, location, zone: {id, wilaya, risk_state}}`|
-	| GET | /api/medical_etab/:user_id/:medical_etab_id | Get one Medical Establishment |Returns a Medical Establishment|
-	| DELETE | /api/medical_etab/:user_id/:medical_etab_id | Delete a Medical Establishment |Returns the Deleted Medical Establishment|
+### IMPORTANT:
+
+- This is a volunteering work (non-profit) and everyone is welcome to contribute to the project!
+- All new pushed features & Pull Requests should be made to the **_[dev branch](https://github.com/MicroClub-USTHB/Zitcode19/tree/dev "dev branch")_** of the project (maintainers will update the master branch once it's deemed stable & approved)
+- All uploaded contributions should follow the dedicated structure:
+	- Front-end > **_/[app-client](https://github.com/MicroClub-USTHB/Zitcode19/tree/dev/app-client "app-client")_** 
+	- Back-end > **_/[app-server](https://github.com/MicroClub-USTHB/Zitcode19/tree/dev/app-server "app-server")_**
+- Always check the repo's **_[issues📌](https://github.com/MicroClub-USTHB/Zitcode19/issues "issues")_** to avoid duplicates.
+- Always initiate an **_[issue📌](https://github.com/MicroClub-USTHB/Zitcode19/issues "issues")_** before taking on a task (add feature/bug fix/report bug ...etc) (use labels 🔖 to mark your issues!)
+- Every contribution is welcome (_adding features✨, bug fix🔧, bug report🐛, porting to different platform📱, design✒️, documentation📝, fixing typos ...etc_).
+- If the PR doesn't align with the project and the repo's rules then it will be marked as invalid. ❌
+
+### Features:
+- **Language:** Ability to chose interface language (Arabic/English/French).
+
+- **Risk Zones:** Risk zones are tagged in the map (most infected by the corona virus).
+
+- **Medical Establishments:** Sanitary & Medical Establishments are tagged in the map (Hospitals, clinics, pharmacies ...etc).
+
+- **Check up:** This tab will contain a to-do/check-box list of the imperative sanitary and hygiene actions to be done. (Backed by push notification alert) e.g: Lockdown time start, Wearing masks before going out, Washing hands every 30mn, ... etc.
+
+- **Agenda:** This tab will provide visibility on the incubation days count of the user. Relative to the last time the user was in a risk-zone. (alert notification)
+
+- **Donation:** Donations must be guided in such a way that the donor can only offer hygiene items, medicine, food supplies and first aid items.(alert notification)
+	- > **No monetary donation is accepted. ❌**
+ 
+- **Check-list:** This tab will allow you to have a mapping with the
+different check points for screening; for the collection of
+donation collections.
+
+- **Notifications:** A notification system for different updates or reminders.
+
+
+### NOTE!
+
+Hey, psst! Wanna make things easier and avoid using CLI for Git? At Micro Club we like to use a legendary Git tool!
+
+Here take this, it's dangerous to go alone: [GitKraken  <img alt="GitKraken" src="https://cdn.worldvectorlogo.com/logos/gitkraken.svg" width="50">](https://www.gitkraken.com/invite/8NEzCJjd)
+
+- Download the **Git GUI client**
+- Sign up for the **Glo Issue Boards** (contact repo maintainer to add you to the Glo Issue Board of the team!)
+
+Stay Home :house: Stay safe and Hack COVID-19!
+
+### Contact:
+:e-mail: Email: microclub.contact@gmail.com
+
+LinkedIn Page: [Micro Club](https://www.linkedin.com/company/micro-club/)
+
+LinkedIn Contact: [Micro Club USTHB](https://www.linkedin.com/in/micro-club-usthb-870908156/)
+
+Facebook: [Micro Club USTHB](https://www.facebook.com/Micro.Club.USTHB/)
+
+MI Agency: [MI Agency](https://www.facebook.com/miagency)
