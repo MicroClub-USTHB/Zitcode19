@@ -6,7 +6,7 @@ COVID-19 prevention & safety dedicated mobile app by **Micro Club** members & in
 # Master/Dev branch
 The **"dev" branch** is dedicated to continuous development (all sorts of work to be pushed here) & **Master** branch is updated once the work's tested and aprooved by dev & maintainers.
 
-**Dev** branch is usually the branch ahead, so pull it first to get latest updates.
+**Dev** branch is usually the branch ahead, so **always update your fork** and pull the **dev** branch first to get latest updates before pushing anything to avoid conflicts.
 
 
 ### The App
