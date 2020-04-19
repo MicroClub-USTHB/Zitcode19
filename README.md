@@ -43,20 +43,22 @@ So you want to contribute? easy:
 ### Features:
 - **Language:** Ability to chose interface language (Arabic/English/French).
 
-- **Risk Zones:** Risk zones are tagged in the map (most infected by the corona virus).
-
-- **Medical Establishments:** Sanitary & Medical Establishments are tagged in the map (Hospitals, clinics, pharmacies ...etc).
+- **Map:** includes target zones & establishements:
+	- **Risk:** zones are tagged in the map (most infected by the corona virus).
+	- **Medical Establishments:** Sanitary & Medical Establishments are tagged in the map (Hospitals, clinics, pharmacies ...etc).
+- **Declaration:** Related to suspect/confirmed COVID-19 case or other disease that needs medical attention;
+	- Possibility to report a suspect case / user own case of COVID-19 to authorities.
+	- Possibility to contact health establishements for remote counsultation.
 
 - **Check up:** This tab will contain a to-do/check-box list of the imperative sanitary and hygiene actions to be done. (Backed by push notification alert) e.g: Lockdown time start, Wearing masks before going out, Washing hands every 30mn, ... etc.
 
-- **Agenda:** This tab will provide visibility on the incubation days count of the user. Relative to the last time the user was in a risk-zone. (alert notification)
+- **Agenda:** This tab will provide visibility on the incubation days count of the user.
+	- Relative to the last time the user was in a risk-zone. (alert notification) > lasts 14 days.
+	- Allows user to check other user's Agenda on their contact list.
 
 - **Donation:** Donations must be guided in such a way that the donor can only offer hygiene items, medicine, food supplies and first aid items.(alert notification)
 	- > **No monetary donation is accepted. ❌**
- 
-- **Check-list:** This tab will allow you to have a mapping with the
-different check points for screening; for the collection of
-donation collections.
+	- **Check-points:** a list of offered donation and where to locate the collection check-point.
 
 - **Notifications:** A notification system for different updates or reminders.
 
