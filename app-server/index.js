@@ -12,14 +12,10 @@ const zonesRoutes = require("./routes/zones");
 const medicalEtabRoutes = require("./routes/medicalEtab");
 
 // Import Middlewares
-const {
-    loginRequired,
-    ensureCorrectUser,
-    ensureUserIsAdmin
-} = require("./middleware/auth");
+const { loginRequired, ensureCorrectUser, ensureUserIsAdmin } = require("./middleware/auth");
 const db = require("./models");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,53 +25,43 @@ app.use(bodyParser.json());
 app.use("/api/auth", authRoutes);
 
 // Meetings
-app.use(
-    "/api/users/:user_id/:user_id2/meetings",
-    loginRequired,
-    ensureCorrectUser,
-    meetingsRoutes
-);
+app.use("/api/users/:user_id/:user_id2/meetings", loginRequired, ensureCorrectUser, meetingsRoutes);
 
-app.get("/api/meetings", loginRequired, async function(req, res, next) {
-    try {
-        let meetings = await db.Meeting.find()
-            .sort({ createdAt: "desc" })
-            .populate("user1", {
-                firstName: true,
-                lastName: true,
-                profileImageUrl: true
-            })
-            .populate("user2", {
-                firstName: true,
-                lastName: true,
-                profileImageUrl: true
-            });
-        return res.status(200).json(meetings);
-    } catch (err) {
-        return next(err);
-    }
+app.get("/api/meetings", loginRequired, async function (req, res, next) {
+  try {
+    let meetings = await db.Meeting.find()
+      .sort({ createdAt: "desc" })
+      .populate("user1", {
+        firstName: true,
+        lastName: true,
+        profileImageUrl: true,
+      })
+      .populate("user2", {
+        firstName: true,
+        lastName: true,
+        profileImageUrl: true,
+      });
+    return res.status(200).json(meetings);
+  } catch (err) {
+    return next(err);
+  }
 });
 
 // Zones - medical etablissements
 app.use("/api/zones/:user_id", loginRequired, ensureUserIsAdmin, zonesRoutes);
 
 // Zones - medical etablissements
-app.use(
-    "/api/medical_etab/:user_id",
-    loginRequired,
-    ensureUserIsAdmin,
-    medicalEtabRoutes
-);
+app.use("/api/medical_etab/:user_id", loginRequired, ensureUserIsAdmin, medicalEtabRoutes);
 
 // Error Handling
-app.use(function(req, res, next) {
-    let err = new Error("Not Found");
-    err.status = 404;
-    next(err);
+app.use(function (req, res, next) {
+  let err = new Error("Not Found");
+  err.status = 404;
+  next(err);
 });
 
 app.use(errorHandler);
 
-app.listen(PORT, function() {
-    console.log(`Server is starting on PORT: ${PORT}`);
+app.listen(PORT, function () {
+  console.log(`Server is starting on PORT: ${PORT}`);
 });
