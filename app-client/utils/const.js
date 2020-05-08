@@ -3,4 +3,4 @@ export const SECENDARY_BACKGROUND = "#ededed";
 export const PRIMARY = "#827ed3";
 export const PRIMARY_TEXT = PRIMARY + "80";
 
-export const API_ROOT_URL = "";
+export const API_ROOT_URL = "https://microclub-covid19.herokuapp.com/api";

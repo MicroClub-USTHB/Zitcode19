@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-// all my routes here - they will com later!!
+// all my routes here - they will come later!!
 // User Auth
 app.use("/api/auth", authRoutes);
 
