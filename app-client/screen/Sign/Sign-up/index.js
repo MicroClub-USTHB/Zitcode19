@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableHighlight, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import Styles from "./Styles";
 import { PRIMARY, PRIMARY_TEXT, SECENDARY_BACKGROUND, PRIMARY_BACKGROUND } from "../../../utils/const";
 import { fetchSignUp } from "../../../api/auth";
@@ -16,12 +16,12 @@ export default class Up extends Component {
     };
   }
   submitSignUp() {
-    fetchSignUp("John", "Wick", "Male", "1964-09-02", "Los Angeles", "0651812345", "password")
+    fetchSignUp("John", "Wick", "Male", "1964-09-02", "Los Angeles", "0651812340", "password")
       .then((res) => {
-        console.log({ res });
+        Alert.alert("Succès", "Votre compte a été créé avec succès");
       })
       .catch((err) => {
-        console.log({ err });
+        Alert.alert("Oops!", err.message);
       });
   }
   render() {
