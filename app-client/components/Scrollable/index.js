@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import ScrollableTabView, { ScrollableTabBar, DefaultTabBar } from "react-native-scrollable-tab-view";
 import Up from "../../screen/Sign/Sign-up";
 import In from "../../screen/Sign/Sign-in";
-import { PRIMARY, PRIMARY_BACKGROUND } from "../../utils/const";
+import { PRIMARY_BACKGROUND, PRIMARY } from "../../utils/const";
 
 export default class Scrollable extends Component {
   render() {
