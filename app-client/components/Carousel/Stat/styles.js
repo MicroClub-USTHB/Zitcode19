@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     flexBasis: "33%",
     flex: 1,
     maxWidth: "33%",
+    // height: 200,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",

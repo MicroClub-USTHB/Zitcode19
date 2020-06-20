@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { withNavigation } from "react-navigation";
 import MenuBox from "../../components/MenuBox";
 import Styles from "./style";
@@ -57,19 +57,21 @@ class MenuScreen extends Component {
     return (
       <View>
         <AppHeader />
-        <View style={Styles.container}>
-          {this.state.MenuList.map((item, index) => {
-            return (
-              <MenuBox
-                key={index}
-                name={item.name}
-                color={item.color}
-                icon={item.icon ? item.icon : <View />}
-                screen={item.screen}
-              />
-            );
-          })}
-        </View>
+        <ScrollView>
+          <View style={Styles.container}>
+            {this.state.MenuList.map((item, index) => {
+              return (
+                <MenuBox
+                  key={index}
+                  name={item.name}
+                  color={item.color}
+                  icon={item.icon ? item.icon : <View />}
+                  screen={item.screen}
+                />
+              );
+            })}
+          </View>
+        </ScrollView>
       </View>
     );
   }
