@@ -7,10 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./style";
 export default class Todo extends Component {
   state = {
-    noteArray: [
-      { date: "testdate", note: "testnote 1" },
-      { date: "testdate", note: "testnote 1" },
-    ],
+    noteArray: [],
     noteText: "",
   };
   addNote() {
